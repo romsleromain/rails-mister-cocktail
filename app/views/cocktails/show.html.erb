@@ -1,0 +1,23 @@
+<h1>Cocktails#show</h1>
+<p>This is the page detail of <%= @cocktail.name.capitalize %> </p>
+
+
+<p>
+<% if @cocktail.doses.nil? == false %>
+  <% @cocktail.doses.each do |dose| %>
+    <%= dose.description %>
+    <%= dose.ingredient.name %> //
+    <%= link_to 'delete dose here', cocktail_dose_path(@cocktail.id, dose.id),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+    <br>
+  <% end %>
+<% end %>
+</p>
+
+
+<br>
+<%= link_to '+ Add new dose for this cocktail', new_cocktail_dose_path(@cocktail) %>
+<br>
+<br>
+<%= link_to 'Go back to cocktail list', cocktails_path %>

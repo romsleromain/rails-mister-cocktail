@@ -1,0 +1,7 @@
+<h2>Create new recepe-dose for : <%= @cocktail.name.capitalize %> </h2>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :description, required: false %>
+  <%= f.input :ingredient, collection: Ingredient.all.map {|u| [u.name, u.id]} %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
